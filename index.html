@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NYPF | Premium New York Style Pizza in Kolkata</title>
+    <meta
+      name="description"
+      content="Experience bold New York-inspired flavors, premium ingredients, and unforgettable handcrafted pizzas at NYPF - New York Pizza Factory in Kolkata."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Header / Nav -->
+    <header id="header">
+      <div class="container nav-container">
+        <a href="#" class="logo">NYPF<span>.</span></a>
+        <nav class="nav-links">
+          <a href="#about">Our Story</a>
+          <a href="#menu">Menu</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#reservation">Reservation</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <a href="tel:+919073358888" class="btn btn-primary"
+            ><i class="ri-phone-fill"></i>Call</a
+          >
+          <button
+            onclick="
+              document.getElementById('order-modal').classList.add('active')
+            "
+            class="btn btn-primary"
+          >
+            Order Now
+          </button>
+          <button class="mobile-toggle"><i class="ri-menu-line"></i></button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-sticky-container">
+        <!-- New Image Sequence Container -->
+        <div class="hero-sequence-container hero-loading">
+          <canvas id="hero-canvas"></canvas>
+          <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container hero-content">
+          <h1 class="reveal-text skeleton-wrapper">
+            <skeleton-loader type="text" lines="4"></skeleton-loader>
+            <span class="skeleton-content">
+              Handcrafted<br />Pizzas<br />Worth<br /><span>Craving.</span>
+            </span>
+          </h1>
+          <!-- <p class="hero-sub reveal-text delay-1">Experience bold flavors, premium ingredients, and unforgettable New York-style pizzas.</p> -->
+
+          <div class="hero-btns reveal-text delay-2">
+            <div class="skeleton-wrapper skeleton-wrapper-inline">
+              <skeleton-loader type="button"></skeleton-loader>
+              <a href="#order" class="btn btn-primary btn-lg skeleton-content">Order Now</a>
+            </div>
+            <div class="skeleton-wrapper skeleton-wrapper-inline">
+              <skeleton-loader type="button"></skeleton-loader>
+              <a href="#menu" class="btn btn-outline btn-lg skeleton-content">Explore Menu</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-indicator-container">
+          <a href="#about" class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="mouse">
+              <div class="wheel"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section-padding" id="about">
+      <div class="container about-grid">
+        <div class="about-image-wrapper reveal-left">
+          <div class="image-frame">
+            <img
+              src="assets/Nypf img7 pizza dough making.jpg"
+              alt="Chef preparing pizza"
+              loading="lazy"
+            />
+            <div class="glass-badge">
+              <div class="skeleton-wrapper" style="width: 100%; height: 100%;">
+                <skeleton-loader type="card"></skeleton-loader>
+                <div class="skeleton-content" style="display: flex; align-items: center; gap: 1rem;">
+                  <i class="ri-restaurant-2-fill"></i>
+                  <div>
+                    <h4>Authentic Recipe</h4>
+                    <p>Hand-tossed dough</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-content reveal-right">
+          <div class="section-tag skeleton-wrapper">
+            <skeleton-loader type="text" lines="1"></skeleton-loader>
+            <span class="skeleton-content">Our Story</span>
+          </div>
+          <h2 class="section-title skeleton-wrapper">
+            <skeleton-loader type="text" lines="2"></skeleton-loader>
+            <span class="skeleton-content">Crafted for True<br />Pizza Lovers.</span>
+          </h2>
+          <p class="skeleton-wrapper">
+            <skeleton-loader type="text" lines="3"></skeleton-loader>
+            <span class="skeleton-content">
+              Born from the bustling streets of New York and brought to the heart
+              of Kolkata, NYPF is more than just a pizza place—it's a culinary
+              obsession.
+            </span>
+          </p>
+          <p class="skeleton-wrapper">
+            <skeleton-loader type="text" lines="3"></skeleton-loader>
+            <span class="skeleton-content">
+              We believe in the power of the perfect crust, the richness of
+              premium San Marzano tomatoes, and the magic of 100% real mozzarella.
+              Every pie is handcrafted to deliver a sensory experience that leaves
+              you craving for more.
+            </span>
+          </p>
+          <ul class="about-list">
+            <li class="skeleton-wrapper">
+              <skeleton-loader type="text" lines="1"></skeleton-loader>
+              <span class="skeleton-content" style="display: flex; align-items: center; gap: 1rem;">
+                <i class="ri-check-line"></i> Premium Ingredients Sourced Daily
+              </span>
+            </li>
+            <li class="skeleton-wrapper">
+              <skeleton-loader type="text" lines="1"></skeleton-loader>
+              <span class="skeleton-content" style="display: flex; align-items: center; gap: 1rem;">
+                <i class="ri-check-line"></i> Signature Thin Crust Perfection
+              </span>
+            </li>
+            <li class="skeleton-wrapper">
+              <skeleton-loader type="text" lines="1"></skeleton-loader>
+              <span class="skeleton-content" style="display: flex; align-items: center; gap: 1rem;">
+                <i class="ri-check-line"></i> Unforgettable Bold Flavors
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu section-padding" id="menu">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag skeleton-wrapper">
+            <skeleton-loader type="text" lines="1"></skeleton-loader>
+            <span class="skeleton-content">Signature Menu</span>
+          </div>
+          <h2 class="section-title skeleton-wrapper">
+            <skeleton-loader type="text" lines="1"></skeleton-loader>
+            <span class="skeleton-content">Taste the Obsession.</span>
+          </h2>
+          <p class="skeleton-wrapper">
+            <skeleton-loader type="text" lines="2"></skeleton-loader>
+            <span class="skeleton-content">
+              Discover our chef-curated selection of premium handcrafted pizzas
+              and rolls.
+            </span>
+          </p>
+        </div>
+
+        <div class="menu-pages-grid reveal-up delay-1">
+          <div class="menu-page-wrapper">
+            <img
+              src="assets/menu_1.jpg"
+              alt="NYPF Menu Page 1"
+              class="menu-page-img"
+              loading="lazy"
+            />
+          </div>
+          <div class="menu-page-wrapper">
+            <img
+              src="assets/menu_2.jpg"
+              alt="NYPF Menu Page 2"
+              class="menu-page-img"
+              loading="lazy"
+            />
+          </div>
+          <div class="menu-page-wrapper">
+            <img
+              src="assets/menu_3.jpg"
+              alt="NYPF Menu Page 3"
+              class="menu-page-img"
+              loading="lazy"
+            />
+          </div>
+          <div class="menu-page-wrapper">
+            <img
+              src="assets/menu_4.jpg"
+              alt="NYPF Menu Page 4"
+              class="menu-page-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="menu-action text-center reveal-up">
+          <div class="skeleton-wrapper skeleton-wrapper-inline">
+            <skeleton-loader type="button"></skeleton-loader>
+            <button id="view-full-menu-btn" class="btn btn-outline btn-lg skeleton-content">
+              View Full Menu
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="features section-padding">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature-card glass-panel reveal-up delay-1 skeleton-wrapper">
+            <skeleton-loader type="card"></skeleton-loader>
+            <div class="skeleton-content">
+              <div class="icon-wrapper"><i class="ri-medal-fill"></i></div>
+              <h3>Premium Quality</h3>
+              <p>
+                Only the finest imported and locally sourced fresh ingredients
+                make the cut.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card glass-panel reveal-up delay-2 skeleton-wrapper">
+            <skeleton-loader type="card"></skeleton-loader>
+            <div class="skeleton-content">
+              <div class="icon-wrapper"><i class="ri-fire-line"></i></div>
+              <h3>Thin Crust Magic</h3>
+              <p>
+                Perfectly blistered, airy, and crisp. The authentic New York style
+                bite.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card glass-panel reveal-up delay-3 skeleton-wrapper">
+            <skeleton-loader type="card"></skeleton-loader>
+            <div class="skeleton-content">
+              <div class="icon-wrapper"><i class="ri-goblet-fill"></i></div>
+              <h3>Luxury Dining</h3>
+              <p>
+                An upscale urban ambiance designed for memorable culinary
+                experiences.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card glass-panel reveal-up delay-4 skeleton-wrapper">
+            <skeleton-loader type="card"></skeleton-loader>
+            <div class="skeleton-content">
+              <div class="icon-wrapper"><i class="ri-e-bike-2-fill"></i></div>
+              <h3>Fast Delivery</h3>
+              <p>
+                Hot, fresh, and pristine right to your doorstep, with no-contact
+                options.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews section-padding" id="reviews">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag skeleton-wrapper">
+            <skeleton-loader type="text" lines="1"></skeleton-loader>
+            <span class="skeleton-content">Customer Love</span>
+          </div>
+          <h2 class="section-title skeleton-wrapper">
+            <skeleton-loader type="text" lines="1"></skeleton-loader>
+            <span class="skeleton-content">The Word on the Street.</span>
+          </h2>
+          <div
+            class="rating-badge skeleton-wrapper"
+            style="margin: 0 auto 3rem; display: flex; width: max-content"
+          >
+            <skeleton-loader type="button"></skeleton-loader>
+            <div class="skeleton-content" style="display: flex; align-items: center; gap: 0.5rem;">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-half-fill"></i>
+              <span>4.6★ (1100+ Happy Customers)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviews-slider reveal-up delay-1">
+          <div class="review-card glass-panel skeleton-wrapper">
+            <skeleton-loader type="card"></skeleton-loader>
+            <div class="skeleton-content">
+              <div class="stars">
+                <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                ><i class="ri-star-fill"></i>
+              </div>
+              <p class="review-text">
+                "This place made me fall in love with pizzas all over again. The
+                crust is thin, the flavors are rich. Way better than mainstream
+                chains!"
+              </p>
+              <div class="reviewer">
+                <div class="avatar">S</div>
+                <div class="info">
+                  <h4>Sneha M.</h4>
+                  <span>Local Guide</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card glass-panel skeleton-wrapper">
+            <skeleton-loader type="card"></skeleton-loader>
+            <div class="skeleton-content">
+              <div class="stars">
+                <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                ><i class="ri-star-fill"></i>
+              </div>
+              <p class="review-text">
+                "The Butter Chicken Pizza Roll is a revelation. Absolutely
+                brilliant fusion and extremely filling. The ambiance is
+                top-notch."
+              </p>
+              <div class="reviewer">
+                <div class="avatar">R</div>
+                <div class="info">
+                  <h4>Rahul D.</h4>
+                  <span>Food Blogger</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card glass-panel skeleton-wrapper">
+            <skeleton-loader type="card"></skeleton-loader>
+            <div class="skeleton-content">
+              <div class="stars">
+                <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                ><i class="ri-star-half-fill"></i>
+              </div>
+              <p class="review-text">
+                "Incredible premium ingredients. You can taste the quality in the
+                cheese and the sauce. Walk on Broadway is highly recommended!"
+              </p>
+              <div class="reviewer">
+                <div class="avatar">A</div>
+                <div class="info">
+                  <h4>Aditya K.</h4>
+                  <span>Regular Customer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery / Vibe -->
+    <section class="gallery section-padding" id="gallery">
+      <div class="container">
+        <div class="section-header text-center reveal-up">
+          <div class="section-tag skeleton-wrapper">
+            <skeleton-loader type="text" lines="1"></skeleton-loader>
+            <span class="skeleton-content">The Vibe</span>
+          </div>
+          <h2 class="section-title skeleton-wrapper">
+            <skeleton-loader type="text" lines="1"></skeleton-loader>
+            <span class="skeleton-content">Immerse in the Experience.</span>
+          </h2>
+        </div>
+
+        <div class="gallery-masonry reveal-up delay-1">
+          <div class="gallery-item large">
+            <img src="assets/gallery_new_3.jpg" alt="Restaurant Ambience" loading="lazy" />
+            <div class="gallery-overlay"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/gallery_new_4.jpg" alt="Restaurant Ambience" loading="lazy" />
+            <div class="gallery-overlay"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/Nypf img6 pizza slize2.jpg" alt="Gourmet Pizza" loading="lazy" />
+            <div class="gallery-overlay"></div>
+          </div>
+          <div class="gallery-item tall">
+            <img
+              src="assets/Nypf img8 pizza dough making2.jpg"
+              alt="Pizza Prep"
+              loading="lazy"
+            />
+            <div class="gallery-overlay"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/gallery_new_1.jpg" alt="Pizza Roll" loading="lazy" />
+            <div class="gallery-overlay"></div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/Nypf img6 pizzacutting.jpg" alt="Pizza Cutting" loading="lazy" />
+            <div class="gallery-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="reservation section-padding" id="reservation">
+      <div class="container reservation-grid">
+        <div class="reservation-content reveal-left">
+          <div class="section-tag skeleton-wrapper">
+            <skeleton-loader type="text" lines="1"></skeleton-loader>
+            <span class="skeleton-content">Book a Table</span>
+          </div>
+          <h2 class="section-title skeleton-wrapper">
+            <skeleton-loader type="text" lines="2"></skeleton-loader>
+            <span class="skeleton-content">Reserve Your NYPF Experience.</span>
+          </h2>
+          <p class="skeleton-wrapper">
+            <skeleton-loader type="text" lines="3"></skeleton-loader>
+            <span class="skeleton-content">
+              Ensure your spot at Kolkata's premium New York-style pizzeria.
+              Perfect for dates, family dinners, and celebrations.
+            </span>
+          </p>
+          <div class="reservation-info">
+            <div class="info-item skeleton-wrapper">
+              <skeleton-loader type="text" lines="2"></skeleton-loader>
+              <div class="skeleton-content" style="display: flex; align-items: flex-start; gap: 1.5rem;">
+                <i class="ri-time-line"></i>
+                <div>
+                  <h4>Opening Hours</h4>
+                  <p>Mon-Sun: 12:00 PM - 11:30 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reservation-form-container glass-panel reveal-right skeleton-wrapper">
+          <skeleton-loader type="card"></skeleton-loader>
+          <div class="skeleton-content">
+            <form id="reservation-form" class="reservation-form">
+              <div class="form-group">
+                <label for="res-name">Full Name</label>
+                <input
+                  type="text"
+                  id="res-name"
+                  required
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="res-phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="res-phone"
+                  required
+                  placeholder="Enter your phone number"
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="res-date">Date</label>
+                  <input type="date" id="res-date" required />
+                </div>
+                <div class="form-group">
+                  <label for="res-time">Time</label>
+                  <input type="time" id="res-time" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="res-guests">Number of Guests</label>
+                <select id="res-guests" required>
+                  <option value="1">1 Person</option>
+                  <option value="2" selected>2 People</option>
+                  <option value="3">3 People</option>
+                  <option value="4">4 People</option>
+                  <option value="5">5+ People</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full-width">
+                Confirm Reservation
+              </button>
+              <div
+                class="form-success-msg"
+                id="res-success"
+                style="display: none"
+              >
+                <i class="ri-checkbox-circle-fill"></i> Reservation Request Sent!
+                We will call you to confirm.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="order">
+      <div class="container">
+        <div class="cta-content glass-panel reveal-up skeleton-wrapper">
+          <skeleton-loader type="card"></skeleton-loader>
+          <div class="skeleton-content" style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+            <div class="cta-text">
+              <h2>Your Next Favorite Pizza Is Waiting.</h2>
+              <p>
+                Craving the perfect slice? Order now for fast delivery or reserve
+                your table for an unforgettable dining experience.
+              </p>
+            </div>
+            <div class="cta-actions">
+              <button
+                onclick="
+                  document.getElementById('order-modal').classList.add('active')
+                "
+                class="btn btn-primary btn-lg"
+              >
+                Order Now <i class="ri-arrow-right-line"></i>
+              </button>
+              <a href="tel:+919073358888" class="btn btn-outline btn-lg"
+                ><i class="ri-phone-line"></i> Call Now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Location -->
+    <section class="contact section-padding" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info reveal-left">
+          <div class="section-tag skeleton-wrapper">
+            <skeleton-loader type="text" lines="1"></skeleton-loader>
+            <span class="skeleton-content">Visit Us</span>
+          </div>
+          <h2 class="section-title skeleton-wrapper">
+            <skeleton-loader type="text" lines="1"></skeleton-loader>
+            <span class="skeleton-content">Drop by for a Slice.</span>
+          </h2>
+
+          <div class="info-list">
+            <div class="info-item skeleton-wrapper">
+              <skeleton-loader type="text" lines="2"></skeleton-loader>
+              <div class="skeleton-content" style="display: flex; gap: 1.5rem;">
+                <div class="icon"><i class="ri-map-pin-line"></i></div>
+                <div>
+                  <h4>Location</h4>
+                  <p>
+                    60A, Alipore Rd, Mangalam,<br />Alipore, Kolkata, West Bengal
+                    700027
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="info-item skeleton-wrapper">
+              <skeleton-loader type="text" lines="2"></skeleton-loader>
+              <div class="skeleton-content" style="display: flex; gap: 1.5rem;">
+                <div class="icon"><i class="ri-time-line"></i></div>
+                <div>
+                  <h4>Hours</h4>
+                  <p>Mon-Sun: 11:00 AM - 11:59 PM</p>
+                </div>
+              </div>
+            </div>
+            <div class="info-item skeleton-wrapper">
+              <skeleton-loader type="text" lines="2"></skeleton-loader>
+              <div class="skeleton-content" style="display: flex; gap: 1.5rem;">
+                <div class="icon"><i class="ri-phone-line"></i></div>
+                <div>
+                  <h4>Contact</h4>
+                  <p>+91 90733 58888</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-social skeleton-wrapper">
+            <skeleton-loader type="button"></skeleton-loader>
+            <div class="skeleton-content" style="display: flex; gap: 1rem;">
+              <a
+                href="https://www.instagram.com/nypfindia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                class="social-link"
+                ><i class="ri-instagram-line"></i
+              ></a>
+              <a href="https://www.facebook.com/nypfindia" class="social-link"
+                ><i class="ri-facebook-fill"></i
+              ></a>
+              <a href="#" class="social-link"><i class="ri-whatsapp-line"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-map reveal-right">
+          <div class="map-container glass-panel">
+            <iframe
+              src="https://maps.google.com/maps?q=NYPF+-+New+York+Pizza+Factory,+60A+Alipore+Rd,+Mangalam,+Alipore,+Kolkata,+West+Bengal+700027&t=&z=17&ie=UTF8&iwloc=B&output=embed"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div class="skeleton-wrapper" style="width: 100%; max-width: 250px; margin-top: 0.25rem;">
+            <skeleton-loader type="button"></skeleton-loader>
+            <a
+              href="https://maps.app.goo.gl/ndyGupm8hr2647uY8"
+              target="_blank"
+              class="btn btn-primary map-directions-btn skeleton-content"
+            >
+              <i class="ri-direction-fill"></i> Get Directions
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">NYPF<span>.</span></a>
+          <p>
+            New York street food culture meets premium urban dining. Handcrafted
+            pizzas made with passion.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Dine-in</a></li>
+            <li><a href="#">Takeaway</a></li>
+            <li><a href="#">No-Contact Delivery</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Subscribe for exclusive offers and new menu drops.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your Email" required />
+            <button type="submit"><i class="ri-arrow-right-line"></i></button>
+          </form>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>&copy; 2026 NYPF - New York Pizza Factory. All rights reserved.</p>
+        <p>Designed for premium taste.</p>
+      </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close"><i class="ri-close-line"></i></span>
+      <span class="lightbox-prev"><i class="ri-arrow-left-s-line"></i></span>
+      <span class="lightbox-next"><i class="ri-arrow-right-s-line"></i></span>
+      <img
+        class="lightbox-content"
+        id="lightbox-img"
+        src=""
+        alt="Full Screen Menu"
+      />
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Order Modal -->
+    <div class="order-modal-overlay" id="order-modal">
+      <div class="order-modal glass-panel">
+        <button
+          class="order-modal-close"
+          onclick="
+            document.getElementById('order-modal').classList.remove('active')
+          "
+        >
+          <i class="ri-close-line"></i>
+        </button>
+        <h3>Choose Your Platform</h3>
+        <p>Order your favorite NYPF pizza through:</p>
+        <div class="order-modal-links">
+          <a
+            href="https://www.zomato.com/kolkata/nypf-new-york-pizza-factory-alipore/order"
+            target="_blank"
+            class="order-platform-btn zomato-btn"
+          >
+            <i class="ri-restaurant-line"></i>
+            <span class="platform-name">Zomato</span>
+            <span class="platform-sub">Order on Zomato</span>
+          </a>
+          <a
+            href="https://www.swiggy.com/city/kolkata/nypf-new-york-pizza-factory-alipore-chetla-rest337487"
+            target="_blank"
+            class="order-platform-btn swiggy-btn"
+          >
+            <i class="ri-takeaway-line"></i>
+            <span class="platform-name">Swiggy</span>
+            <span class="platform-sub">Order on Swiggy</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
