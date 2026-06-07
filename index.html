@@ -371,71 +371,238 @@
           </div>
         </div>
 
-        <div class="reviews-slider reveal-up delay-1">
-          <div class="review-card glass-panel skeleton-wrapper">
-            <skeleton-loader type="card"></skeleton-loader>
-            <div class="skeleton-content">
-              <div class="stars">
-                <i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                ><i class="ri-star-fill"></i>
+        <div class="reviews-marquee-container reveal-up delay-1">
+          <div class="fade-mask left"></div>
+          <div class="fade-mask right"></div>
+          <div class="reviews-track">
+            <!-- First Set -->
+            <div class="reviews-marquee">
+              <div class="review-card glass-panel skeleton-wrapper">
+                <skeleton-loader type="card"></skeleton-loader>
+                <div class="skeleton-content">
+                  <div class="stars">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i>
+                  </div>
+                  <p class="review-text">
+                    "This place made me fall in love with pizzas all over again.
+                    The crust is thin, the flavors are rich. Way better than
+                    mainstream chains!"
+                  </p>
+                  <div class="reviewer">
+                    <div class="avatar">S</div>
+                    <div class="info">
+                      <h4>Sneha M.</h4>
+                      <span>Local Guide</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <p class="review-text">
-                "This place made me fall in love with pizzas all over again. The
-                crust is thin, the flavors are rich. Way better than mainstream
-                chains!"
-              </p>
-              <div class="reviewer">
-                <div class="avatar">S</div>
-                <div class="info">
-                  <h4>Sneha M.</h4>
-                  <span>Local Guide</span>
+
+              <div class="review-card glass-panel skeleton-wrapper">
+                <skeleton-loader type="card"></skeleton-loader>
+                <div class="skeleton-content">
+                  <div class="stars">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i>
+                  </div>
+                  <p class="review-text">
+                    "The Butter Chicken Pizza Roll is a revelation. Absolutely
+                    brilliant fusion and extremely filling. The ambiance is
+                    top-notch."
+                  </p>
+                  <div class="reviewer">
+                    <div class="avatar">R</div>
+                    <div class="info">
+                      <h4>Rahul D.</h4>
+                      <span>Food Blogger</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="review-card glass-panel skeleton-wrapper">
+                <skeleton-loader type="card"></skeleton-loader>
+                <div class="skeleton-content">
+                  <div class="stars">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-half-fill"></i>
+                  </div>
+                  <p class="review-text">
+                    "Incredible premium ingredients. You can taste the quality
+                    in the cheese and the sauce. Walk on Broadway is highly
+                    recommended!"
+                  </p>
+                  <div class="reviewer">
+                    <div class="avatar">A</div>
+                    <div class="info">
+                      <h4>Aditya K.</h4>
+                      <span>Regular Customer</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="review-card glass-panel skeleton-wrapper">
+                <skeleton-loader type="card"></skeleton-loader>
+                <div class="skeleton-content">
+                  <div class="stars">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i>
+                  </div>
+                  <p class="review-text">
+                    "Best New York style slice in town. The crust is simply
+                    perfect and the ambiance is stunning."
+                  </p>
+                  <div class="reviewer">
+                    <div class="avatar">P</div>
+                    <div class="info">
+                      <h4>Priya S.</h4>
+                      <span>Foodie</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="review-card glass-panel skeleton-wrapper">
+                <skeleton-loader type="card"></skeleton-loader>
+                <div class="skeleton-content">
+                  <div class="stars">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i>
+                  </div>
+                  <p class="review-text">
+                    "A true luxury dining experience. The attention to detail in
+                    every pizza is remarkable."
+                  </p>
+                  <div class="reviewer">
+                    <div class="avatar">V</div>
+                    <div class="info">
+                      <h4>Vikram T.</h4>
+                      <span>Pizza Lover</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="review-card glass-panel skeleton-wrapper">
-            <skeleton-loader type="card"></skeleton-loader>
-            <div class="skeleton-content">
-              <div class="stars">
-                <i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                ><i class="ri-star-fill"></i>
-              </div>
-              <p class="review-text">
-                "The Butter Chicken Pizza Roll is a revelation. Absolutely
-                brilliant fusion and extremely filling. The ambiance is
-                top-notch."
-              </p>
-              <div class="reviewer">
-                <div class="avatar">R</div>
-                <div class="info">
-                  <h4>Rahul D.</h4>
-                  <span>Food Blogger</span>
+            <!-- Second Set (Duplicate for Infinite Loop) -->
+            <div class="reviews-marquee" aria-hidden="true">
+              <div class="review-card glass-panel skeleton-wrapper">
+                <skeleton-loader type="card"></skeleton-loader>
+                <div class="skeleton-content">
+                  <div class="stars">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i>
+                  </div>
+                  <p class="review-text">
+                    "This place made me fall in love with pizzas all over again.
+                    The crust is thin, the flavors are rich. Way better than
+                    mainstream chains!"
+                  </p>
+                  <div class="reviewer">
+                    <div class="avatar">S</div>
+                    <div class="info">
+                      <h4>Sneha M.</h4>
+                      <span>Local Guide</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div class="review-card glass-panel skeleton-wrapper">
-            <skeleton-loader type="card"></skeleton-loader>
-            <div class="skeleton-content">
-              <div class="stars">
-                <i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                ><i class="ri-star-half-fill"></i>
+              <div class="review-card glass-panel skeleton-wrapper">
+                <skeleton-loader type="card"></skeleton-loader>
+                <div class="skeleton-content">
+                  <div class="stars">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i>
+                  </div>
+                  <p class="review-text">
+                    "The Butter Chicken Pizza Roll is a revelation. Absolutely
+                    brilliant fusion and extremely filling. The ambiance is
+                    top-notch."
+                  </p>
+                  <div class="reviewer">
+                    <div class="avatar">R</div>
+                    <div class="info">
+                      <h4>Rahul D.</h4>
+                      <span>Food Blogger</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <p class="review-text">
-                "Incredible premium ingredients. You can taste the quality in
-                the cheese and the sauce. Walk on Broadway is highly
-                recommended!"
-              </p>
-              <div class="reviewer">
-                <div class="avatar">A</div>
-                <div class="info">
-                  <h4>Aditya K.</h4>
-                  <span>Regular Customer</span>
+
+              <div class="review-card glass-panel skeleton-wrapper">
+                <skeleton-loader type="card"></skeleton-loader>
+                <div class="skeleton-content">
+                  <div class="stars">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-half-fill"></i>
+                  </div>
+                  <p class="review-text">
+                    "Incredible premium ingredients. You can taste the quality
+                    in the cheese and the sauce. Walk on Broadway is highly
+                    recommended!"
+                  </p>
+                  <div class="reviewer">
+                    <div class="avatar">A</div>
+                    <div class="info">
+                      <h4>Aditya K.</h4>
+                      <span>Regular Customer</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="review-card glass-panel skeleton-wrapper">
+                <skeleton-loader type="card"></skeleton-loader>
+                <div class="skeleton-content">
+                  <div class="stars">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i>
+                  </div>
+                  <p class="review-text">
+                    "Best New York style slice in town. The crust is simply
+                    perfect and the ambiance is stunning."
+                  </p>
+                  <div class="reviewer">
+                    <div class="avatar">P</div>
+                    <div class="info">
+                      <h4>Priya S.</h4>
+                      <span>Foodie</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="review-card glass-panel skeleton-wrapper">
+                <skeleton-loader type="card"></skeleton-loader>
+                <div class="skeleton-content">
+                  <div class="stars">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i>
+                  </div>
+                  <p class="review-text">
+                    "A true luxury dining experience. The attention to detail in
+                    every pizza is remarkable."
+                  </p>
+                  <div class="reviewer">
+                    <div class="avatar">V</div>
+                    <div class="info">
+                      <h4>Vikram T.</h4>
+                      <span>Pizza Lover</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
