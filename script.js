@@ -277,18 +277,46 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// Mobile Menu Toggle (Basic implementation)
+// Mobile Menu Toggle
 const mobileToggle = document.querySelector(".mobile-toggle");
-const navLinks = document.querySelector(".nav-links");
+const mobileMenu = document.getElementById("mobile-menu");
+const mobileMenuClose = document.getElementById("mobile-menu-close");
 
-// As the user requested a minimal approach without extensive JS libraries,
-// a simple toggle is implemented here. In a real-world scenario, you might want to
-// create a full-screen mobile menu overlay.
+const openMobileMenu = () => {
+  mobileMenu.classList.add("active");
+  document.body.style.overflow = "hidden";
+  mobileToggle.querySelector("i").className = "ri-close-line";
+};
+
+const closeMobileMenu = () => {
+  mobileMenu.classList.remove("active");
+  document.body.style.overflow = "";
+  mobileToggle.querySelector("i").className = "ri-menu-line";
+};
+
 mobileToggle.addEventListener("click", () => {
-  alert(
-    "Mobile menu clicked! (Implement full screen overlay based on design preferences)",
-  );
+  if (mobileMenu.classList.contains("active")) {
+    closeMobileMenu();
+  } else {
+    openMobileMenu();
+  }
 });
+
+mobileMenuClose.addEventListener("click", closeMobileMenu);
+
+// Close menu when a mobile nav link is clicked
+document.querySelectorAll(".mobile-nav-links a").forEach((link) => {
+  link.addEventListener("click", closeMobileMenu);
+});
+
+// Mobile order button opens the order modal after closing the menu
+const mobileOrderBtn = document.querySelector(".mobile-order-btn");
+if (mobileOrderBtn) {
+  mobileOrderBtn.addEventListener("click", () => {
+    closeMobileMenu();
+    document.getElementById("order-modal").classList.add("active");
+  });
+}
 
 // Reservation Form Handling
 const resForm = document.getElementById("reservation-form");
