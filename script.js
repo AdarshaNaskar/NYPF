@@ -280,7 +280,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 // Mobile Menu Toggle
 const mobileToggle = document.querySelector(".mobile-toggle");
 const mobileMenu = document.getElementById("mobile-menu");
-const mobileMenuClose = document.getElementById("mobile-menu-close");
 
 const openMobileMenu = () => {
   mobileMenu.classList.add("active");
@@ -301,8 +300,6 @@ mobileToggle.addEventListener("click", () => {
     openMobileMenu();
   }
 });
-
-mobileMenuClose.addEventListener("click", closeMobileMenu);
 
 // Close menu when a mobile nav link is clicked
 document.querySelectorAll(".mobile-nav-links a").forEach((link) => {

@@ -43,7 +43,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -51,7 +51,7 @@ body {
   background-color: var(--clr-primary);
   color: var(--clr-secondary);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Custom Cursor */
@@ -341,7 +341,7 @@ header.scrolled {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
   width: 100%;
   padding: 2rem;
   transform: translateY(20px);
@@ -380,19 +380,19 @@ header.scrolled {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .mobile-nav-links a {
   font-family: var(--font-heading);
-  font-size: 2.8rem;
-  color: var(--clr-secondary);
+  font-size: 2.2rem;
+  color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 3px;
   transition: var(--transition);
   position: relative;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 1rem;
 }
 
 .mobile-nav-links a::after {
@@ -1830,7 +1830,7 @@ skeleton-loader {
 }
 
 /* Hero sequence container loading state */
-.hero-sequence-container {
+.hero-loading {
   position: relative;
 }
 
