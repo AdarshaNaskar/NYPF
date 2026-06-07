@@ -8,10 +8,13 @@ class SkeletonLoader extends HTMLElement {
       let html = '<div class="skeleton-text-container">';
       for (let i = 0; i < lines; i++) {
         // Natural look: last line slightly shorter
-        const width = (lines > 1 && i === lines - 1) ? "65%" : `${85 + Math.floor(Math.random() * 15)}%`;
+        const width =
+          lines > 1 && i === lines - 1
+            ? "65%"
+            : `${85 + Math.floor(Math.random() * 15)}%`;
         html += `<div class="skeleton-text-line" style="width: ${width}"></div>`;
       }
-      html += '</div>';
+      html += "</div>";
       this.innerHTML = html;
     } else {
       this.innerHTML = '<div class="skeleton-shimmer-overlay"></div>';
@@ -24,10 +27,12 @@ customElements.define("skeleton-loader", SkeletonLoader);
 document.addEventListener("DOMContentLoaded", () => {
   // Find all images within containers that require skeletons
   const images = document.querySelectorAll(
-    ".image-frame img, .menu-page-wrapper img, .gallery-item img"
+    ".image-frame img, .menu-page-wrapper img, .gallery-item img",
   );
   images.forEach((img) => {
-    const wrapper = img.closest(".image-frame, .menu-page-wrapper, .gallery-item");
+    const wrapper = img.closest(
+      ".image-frame, .menu-page-wrapper, .gallery-item",
+    );
     if (!wrapper) return;
 
     if (!img.complete) {
@@ -284,13 +289,13 @@ const mobileMenu = document.getElementById("mobile-menu");
 const openMobileMenu = () => {
   mobileMenu.classList.add("active");
   document.body.style.overflow = "hidden";
-  mobileToggle.querySelector("i").className = "ri-close-line";
+  mobileToggle.classList.add("active");
 };
 
 const closeMobileMenu = () => {
   mobileMenu.classList.remove("active");
   document.body.style.overflow = "";
-  mobileToggle.querySelector("i").className = "ri-menu-line";
+  mobileToggle.classList.remove("active");
 };
 
 mobileToggle.addEventListener("click", () => {
@@ -399,7 +404,7 @@ if (canvas) {
     context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
   };
 
-  canvas.style.transition = 'opacity 0.4s ease-in-out';
+  canvas.style.transition = "opacity 0.4s ease-in-out";
   firstImg.onload = () => {
     drawCenteredImage(firstImg);
     if (heroSeqContainer) {
