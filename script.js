@@ -25,53 +25,61 @@ customElements.define("skeleton-loader", SkeletonLoader);
 
 // Global Skeleton Loader Control Logic
 document.addEventListener("DOMContentLoaded", () => {
-  // Find all images within containers that require skeletons
-  const images = document.querySelectorAll(
-    ".image-frame img, .menu-page-wrapper img, .gallery-item img",
+  // 1. Image Skeletons (Gallery, Menu Cards, etc.)
+  const imageContainers = document.querySelectorAll(
+    ".image-frame, .menu-page-wrapper, .gallery-item"
   );
-  images.forEach((img) => {
-    const wrapper = img.closest(
-      ".image-frame, .menu-page-wrapper, .gallery-item",
-    );
-    if (!wrapper) return;
+  imageContainers.forEach((wrapper) => {
+    const img = wrapper.querySelector("img");
+    if (!img) return;
 
-    if (!img.complete) {
+    if (!img.complete || img.naturalWidth === 0) {
       wrapper.classList.add("image-loading");
-      img.addEventListener("load", () => {
-        wrapper.classList.remove("image-loading");
-      });
-      img.addEventListener("error", () => {
-        wrapper.classList.remove("image-loading");
-      });
-    } else {
-      wrapper.classList.remove("image-loading");
+      const removeSkeleton = () => wrapper.classList.remove("image-loading");
+      img.addEventListener("load", removeSkeleton);
+      img.addEventListener("error", removeSkeleton);
     }
   });
 
-  // Map loading control
-  const mapIframe = document.querySelector(".map-container iframe");
-  if (mapIframe) {
-    const mapWrapper = mapIframe.closest(".map-container");
-    if (mapWrapper) {
-      mapWrapper.classList.add("map-loading");
-      mapIframe.addEventListener("load", () => {
-        mapWrapper.classList.remove("map-loading");
-      });
+  // 2. Map loading control (Lazy Load via Intersection Observer)
+  const contactSection = document.getElementById("contact");
+  if (contactSection) {
+    const iframe = contactSection.querySelector("iframe[data-src]");
+    if (iframe) {
+      const wrapper = iframe.closest(".map-container");
+      // Display premium skeleton placeholder before loading
+      if (wrapper) wrapper.classList.add("map-loading");
+      
+      const mapObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            iframe.addEventListener("load", () => {
+              if (wrapper) wrapper.classList.remove("map-loading");
+            });
+            
+            iframe.src = iframe.getAttribute("data-src");
+            iframe.removeAttribute("data-src");
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: "200px" });
+      mapObserver.observe(contactSection);
     }
   }
 
-  // Simulated content loading for text, buttons, and cards
+  // 3. Text and UI Skeletons (Reviews, Headings)
   const skeletonWrappers = document.querySelectorAll(".skeleton-wrapper");
   skeletonWrappers.forEach((wrapper) => {
-    wrapper.classList.add("loading");
-  });
-
-  // Turn off dynamic text/card/button skeletons after 1.5s
-  setTimeout(() => {
-    skeletonWrappers.forEach((wrapper) => {
+    // Only show skeleton if fonts are actually loading to prevent flashing
+    if (document.fonts && document.fonts.status === "loading") {
+      wrapper.classList.add("loading");
+      document.fonts.ready.then(() => {
+        wrapper.classList.remove("loading");
+      });
+    } else {
       wrapper.classList.remove("loading");
-    });
-  }, 1500);
+    }
+  });
 });
 
 // Custom Cursor
@@ -154,113 +162,31 @@ setTimeout(() => {
     el.classList.add("active");
   });
 }, 100);
-// Lightbox Logic
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const lightboxClose = document.querySelector(".lightbox-close");
-const lightboxPrev = document.querySelector(".lightbox-prev");
-const lightboxNext = document.querySelector(".lightbox-next");
-const menuImages = Array.from(document.querySelectorAll(".menu-page-img"));
-const viewFullMenuBtn = document.getElementById("view-full-menu-btn");
+// Lazy Load Lightbox/Gallery Logic
+const menuSection = document.getElementById("menu");
+const gallerySection = document.getElementById("gallery");
+let galleryScriptLoaded = false;
 
-let currentImageIndex = 0;
-
-const updateLightboxImage = () => {
-  lightboxImg.style.opacity = "0";
-  setTimeout(() => {
-    lightboxImg.src = menuImages[currentImageIndex].src;
-    lightboxImg.style.opacity = "1";
-  }, 200);
+const loadGalleryScript = () => {
+  if (galleryScriptLoaded) return;
+  galleryScriptLoaded = true;
+  const script = document.createElement("script");
+  script.src = "gallery.js";
+  script.defer = true;
+  document.body.appendChild(script);
 };
 
-const openLightbox = (index) => {
-  currentImageIndex = index;
-  lightboxImg.src = menuImages[currentImageIndex].src;
-  lightbox.classList.add("active");
-  document.body.style.overflow = "hidden"; // Prevent scrolling
-};
-
-menuImages.forEach((img, index) => {
-  img.addEventListener("click", () => {
-    openLightbox(index);
+const sectionObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      loadGalleryScript();
+      observer.disconnect();
+    }
   });
-});
+}, { rootMargin: "200px" });
 
-if (viewFullMenuBtn) {
-  viewFullMenuBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    openLightbox(0);
-  });
-}
-
-const closeLightbox = () => {
-  lightbox.classList.remove("active");
-  document.body.style.overflow = "auto"; // Re-enable scrolling
-};
-
-const showNextImage = (e) => {
-  if (e) e.stopPropagation();
-  currentImageIndex = (currentImageIndex + 1) % menuImages.length;
-  updateLightboxImage();
-};
-
-const showPrevImage = (e) => {
-  if (e) e.stopPropagation();
-  currentImageIndex =
-    (currentImageIndex - 1 + menuImages.length) % menuImages.length;
-  updateLightboxImage();
-};
-
-lightboxClose.addEventListener("click", closeLightbox);
-lightboxNext.addEventListener("click", showNextImage);
-lightboxPrev.addEventListener("click", showPrevImage);
-
-lightbox.addEventListener("click", (e) => {
-  if (
-    e.target !== lightboxImg &&
-    e.target !== lightboxNext &&
-    e.target !== lightboxPrev &&
-    !lightboxNext.contains(e.target) &&
-    !lightboxPrev.contains(e.target)
-  ) {
-    closeLightbox();
-  }
-});
-
-// Keyboard navigation
-document.addEventListener("keydown", (e) => {
-  if (!lightbox.classList.contains("active")) return;
-
-  if (e.key === "Escape") closeLightbox();
-  if (e.key === "ArrowRight") showNextImage();
-  if (e.key === "ArrowLeft") showPrevImage();
-});
-
-// Swipe support for mobile
-let touchStartX = 0;
-let touchEndX = 0;
-
-lightbox.addEventListener(
-  "touchstart",
-  (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  },
-  { passive: true },
-);
-
-lightbox.addEventListener(
-  "touchend",
-  (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  },
-  { passive: true },
-);
-
-const handleSwipe = () => {
-  if (touchEndX < touchStartX - 50) showNextImage();
-  if (touchEndX > touchStartX + 50) showPrevImage();
-};
+if (menuSection) sectionObserver.observe(menuSection);
+if (gallerySection) sectionObserver.observe(gallerySection);
 
 // Smooth Scrolling for Anchor Links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -359,21 +285,22 @@ if (canvas) {
 
   // Generate image paths
   const currentFrame = (index) =>
-    `assets/pizza hero/ezgif-frame-${index.toString().padStart(3, "0")}.jpg`;
+    `assets/pizza hero/ezgif-frame-${index.toString().padStart(3, "0")}.webp`;
 
   const images = [];
   let imageIndex = 0;
 
-  // Add loading skeleton state to the sequence container
   const heroSeqContainer = document.querySelector(".hero-sequence-container");
-  if (heroSeqContainer) {
-    heroSeqContainer.classList.add("hero-loading");
-  }
 
   // Load first image immediately
   const firstImg = new Image();
   firstImg.src = currentFrame(1);
   images.push(firstImg);
+
+  // Prevent flash by checking if image is already cached
+  if (!firstImg.complete && heroSeqContainer) {
+    heroSeqContainer.classList.add("hero-loading");
+  }
 
   // Function to draw image imitating background-size: contain, zoomed out, bottom middle
   const drawCenteredImage = (img) => {
@@ -405,12 +332,20 @@ if (canvas) {
   };
 
   canvas.style.transition = "opacity 0.4s ease-in-out";
-  firstImg.onload = () => {
+  
+  const handleFirstImgLoad = () => {
     drawCenteredImage(firstImg);
     if (heroSeqContainer) {
       heroSeqContainer.classList.remove("hero-loading");
     }
   };
+
+  if (firstImg.complete) {
+    handleFirstImgLoad();
+  } else {
+    firstImg.addEventListener("load", handleFirstImgLoad);
+    firstImg.addEventListener("error", handleFirstImgLoad);
+  }
 
   // Preload remaining images asynchronously
   for (let i = 2; i <= frameCount; i++) {
@@ -427,47 +362,64 @@ if (canvas) {
   });
 
   const heroSection = document.querySelector(".hero");
+  const heroContent = document.querySelector(".hero-content");
   let ticking = false;
+  let isHeroVisible = true;
+
+  if (heroSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isHeroVisible = entry.isIntersecting;
+      });
+    });
+    observer.observe(heroSection);
+  }
+
+  const updateAnimation = () => {
+    if (!heroSection || !isHeroVisible) {
+      ticking = false;
+      return;
+    }
+
+    const scrollDistance = heroSection.clientHeight - window.innerHeight;
+    let scrollProgress = window.scrollY / scrollDistance;
+
+    // Clamp progress
+    if (scrollProgress < 0) scrollProgress = 0;
+    if (scrollProgress > 1) scrollProgress = 1;
+
+    // Calculate current frame
+    const frameIndex = Math.floor(scrollProgress * (frameCount - 1));
+
+    if (imageIndex !== frameIndex) {
+      imageIndex = frameIndex;
+      if (images[imageIndex] && images[imageIndex].complete) {
+        drawCenteredImage(images[imageIndex]);
+      }
+    }
+
+    // Parallax depth / scale effect
+    const scaleValue = 1.05 + scrollProgress * 0.15; // Zooms in smoothly
+    canvas.style.transform = `scale3d(${scaleValue}, ${scaleValue}, 1)`;
+
+    // Optional: Slightly fade out content as user scrolls down
+    if (heroContent) {
+      const contentOpacity = 1 - scrollProgress * 2.5;
+      heroContent.style.opacity = Math.max(0, contentOpacity);
+      heroContent.style.transform = `translate3d(0, -${scrollProgress * 300}px, 0)`;
+    }
+
+    ticking = false;
+  };
 
   window.addEventListener("scroll", () => {
     if (!heroSection) return;
 
     if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const scrollDistance = heroSection.clientHeight - window.innerHeight;
-        let scrollProgress = window.scrollY / scrollDistance;
-
-        // Clamp progress
-        if (scrollProgress < 0) scrollProgress = 0;
-        if (scrollProgress > 1) scrollProgress = 1;
-
-        // Calculate current frame
-        const frameIndex = Math.floor(scrollProgress * (frameCount - 1));
-
-        if (imageIndex !== frameIndex) {
-          imageIndex = frameIndex;
-          if (images[imageIndex]) {
-            drawCenteredImage(images[imageIndex]);
-          }
-        }
-
-        // Parallax depth / scale effect
-        const scaleValue = 1.05 + scrollProgress * 0.15; // Zooms in smoothly
-        canvas.style.transform = `scale(${scaleValue})`;
-
-        // Optional: Slightly fade out content as user scrolls down
-        const heroContent = document.querySelector(".hero-content");
-        if (heroContent) {
-          const contentOpacity = 1 - scrollProgress * 2.5;
-          heroContent.style.opacity = Math.max(0, contentOpacity);
-          heroContent.style.transform = `translateY(-${scrollProgress * 300}px)`;
-        }
-
-        ticking = false;
-      });
+      window.requestAnimationFrame(updateAnimation);
       ticking = true;
     }
-  });
+  }, { passive: true });
 }
 
 // Order Modal - close on overlay click or Escape

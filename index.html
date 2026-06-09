@@ -8,17 +8,40 @@
       name="description"
       content="Experience bold New York-inspired flavors, premium ingredients, and unforgettable handcrafted pizzas at NYPF - New York Pizza Factory in Kolkata."
     />
+    
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+    <!-- LCP Optimization: Preload Hero Image -->
+    <link rel="preload" as="image" href="assets/pizza%20hero/ezgif-frame-001.webp" fetchpriority="high" />
+    
+    <!-- Preload Font CSS (Bebas Neue for Logo, Inter for Primary Font) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" fetchpriority="high" />
+
+    <!-- Render-blocking CSS (Must be local and critical) -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Non-render-blocking external CSS -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
-    <link rel="stylesheet" href="style.css" />
+
+    <!-- Fallbacks for Non-JS browsers -->
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" />
+    </noscript>
   </head>
 
   <body>
@@ -128,7 +151,11 @@
         <div class="about-image-wrapper reveal-left">
           <div class="image-frame">
             <img
-              src="assets/Nypf img7 pizza dough making.jpg"
+              src="assets/Nypf img7 pizza dough making.webp"
+              srcset="assets/Nypf img7 pizza dough making-480w.webp 480w, assets/Nypf img7 pizza dough making-800w.webp 800w, assets/Nypf img7 pizza dough making-1200w.webp 1200w"
+              sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px"
+              width="1080"
+              height="1080"
               alt="Chef preparing pizza"
               loading="lazy"
             />
@@ -234,7 +261,11 @@
         <div class="menu-pages-grid reveal-up delay-1">
           <div class="menu-page-wrapper">
             <img
-              src="assets/menu_1.jpg"
+              src="assets/menu_1.webp"
+              srcset="assets/menu_1-480w.webp 480w, assets/menu_1-800w.webp 800w, assets/menu_1-1200w.webp 1200w"
+              sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px"
+              width="1240"
+              height="1755"
               alt="NYPF Menu Page 1"
               class="menu-page-img"
               loading="lazy"
@@ -242,7 +273,11 @@
           </div>
           <div class="menu-page-wrapper">
             <img
-              src="assets/menu_2.jpg"
+              src="assets/menu_2.webp"
+              srcset="assets/menu_2-480w.webp 480w, assets/menu_2-800w.webp 800w, assets/menu_2-1200w.webp 1200w"
+              sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px"
+              width="1241"
+              height="1755"
               alt="NYPF Menu Page 2"
               class="menu-page-img"
               loading="lazy"
@@ -250,7 +285,11 @@
           </div>
           <div class="menu-page-wrapper">
             <img
-              src="assets/menu_3.jpg"
+              src="assets/menu_3.webp"
+              srcset="assets/menu_3-480w.webp 480w, assets/menu_3-800w.webp 800w, assets/menu_3-1200w.webp 1200w"
+              sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px"
+              width="1240"
+              height="1755"
               alt="NYPF Menu Page 3"
               class="menu-page-img"
               loading="lazy"
@@ -258,7 +297,11 @@
           </div>
           <div class="menu-page-wrapper">
             <img
-              src="assets/menu_4.jpg"
+              src="assets/menu_4.webp"
+              srcset="assets/menu_4-480w.webp 480w, assets/menu_4-800w.webp 800w, assets/menu_4-1200w.webp 1200w"
+              sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px"
+              width="1240"
+              height="1755"
               alt="NYPF Menu Page 4"
               class="menu-page-img"
               loading="lazy"
@@ -628,7 +671,11 @@
         <div class="gallery-masonry reveal-up delay-1">
           <div class="gallery-item large">
             <img
-              src="assets/gallery_new_3.jpg"
+              src="assets/gallery_new_3.webp"
+              srcset="assets/gallery_new_3-480w.webp 480w, assets/gallery_new_3-800w.webp 800w, assets/gallery_new_3-1200w.webp 1200w"
+              sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px"
+              width="1440"
+              height="1080"
               alt="Restaurant Ambience"
               loading="lazy"
             />
@@ -636,7 +683,11 @@
           </div>
           <div class="gallery-item">
             <img
-              src="assets/gallery_new_4.jpg"
+              src="assets/gallery_new_4.webp"
+              srcset="assets/gallery_new_4-480w.webp 480w, assets/gallery_new_4-800w.webp 800w, assets/gallery_new_4-1200w.webp 1200w"
+              sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px"
+              width="1434"
+              height="1080"
               alt="Restaurant Ambience"
               loading="lazy"
             />
@@ -644,7 +695,11 @@
           </div>
           <div class="gallery-item">
             <img
-              src="assets/Nypf img6 pizza slize2.jpg"
+              src="assets/Nypf img6 pizza slize2.webp"
+              srcset="assets/Nypf img6 pizza slize2-480w.webp 480w, assets/Nypf img6 pizza slize2-800w.webp 800w, assets/Nypf img6 pizza slize2-1200w.webp 1200w"
+              sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px"
+              width="215"
+              height="280"
               alt="Gourmet Pizza"
               loading="lazy"
             />
@@ -652,7 +707,11 @@
           </div>
           <div class="gallery-item tall">
             <img
-              src="assets/Nypf img8 pizza dough making2.jpg"
+              src="assets/Nypf img8 pizza dough making2.webp"
+              srcset="assets/Nypf img8 pizza dough making2-480w.webp 480w, assets/Nypf img8 pizza dough making2-800w.webp 800w, assets/Nypf img8 pizza dough making2-1200w.webp 1200w"
+              sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px"
+              width="1080"
+              height="1080"
               alt="Pizza Prep"
               loading="lazy"
             />
@@ -660,7 +719,11 @@
           </div>
           <div class="gallery-item">
             <img
-              src="assets/gallery_new_1.jpg"
+              src="assets/gallery_new_1.webp"
+              srcset="assets/gallery_new_1-480w.webp 480w, assets/gallery_new_1-800w.webp 800w, assets/gallery_new_1-1200w.webp 1200w"
+              sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px"
+              width="720"
+              height="1080"
               alt="Pizza Roll"
               loading="lazy"
             />
@@ -668,7 +731,11 @@
           </div>
           <div class="gallery-item">
             <img
-              src="assets/Nypf img6 pizzacutting.jpg"
+              src="assets/Nypf img6 pizzacutting.webp"
+              srcset="assets/Nypf img6 pizzacutting-480w.webp 480w, assets/Nypf img6 pizzacutting-800w.webp 800w, assets/Nypf img6 pizzacutting-1200w.webp 1200w"
+              sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px"
+              width="1440"
+              height="1440"
               alt="Pizza Cutting"
               loading="lazy"
             />
@@ -884,9 +951,8 @@
         <div class="contact-map reveal-right">
           <div class="map-container glass-panel">
             <iframe
-              src="https://maps.google.com/maps?q=NYPF+-+New+York+Pizza+Factory,+60A+Alipore+Rd,+Mangalam,+Alipore,+Kolkata,+West+Bengal+700027&t=&z=17&ie=UTF8&iwloc=B&output=embed"
+              data-src="https://maps.google.com/maps?q=NYPF+-+New+York+Pizza+Factory,+60A+Alipore+Rd,+Mangalam,+Alipore,+Kolkata,+West+Bengal+700027&t=&z=17&ie=UTF8&iwloc=B&output=embed"
               allowfullscreen=""
-              loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
@@ -1001,6 +1067,22 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Mobile Action Bar -->
+    <div class="mobile-action-bar">
+      <a href="tel:+919073358888" class="action-btn">
+        <i class="ri-phone-fill"></i>
+        <span>Call Now</span>
+      </a>
+      <a href="https://maps.app.goo.gl/ndyGupm8hr2647uY8" target="_blank" class="action-btn">
+        <i class="ri-direction-fill"></i>
+        <span>Directions</span>
+      </a>
+      <button class="action-btn primary-action" onclick="document.getElementById('order-modal').classList.add('active')">
+        <i class="ri-shopping-bag-3-fill"></i>
+        <span>Order Online</span>
+      </button>
+    </div>
+
+    <script src="script.js" defer></script>
   </body>
 </html>
