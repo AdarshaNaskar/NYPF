@@ -437,3 +437,93 @@ if (orderModal) {
     }
   });
 }
+
+// ----------------------------------------
+// Reviews Mobile Swipe Support
+// ----------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const reviewsTrack = document.querySelector(".reviews-track");
+  if (!reviewsTrack) return;
+
+  let startX = 0;
+  let animStartTime = 0;
+  let resumeTimer = null;
+  let isSwiping = false;
+
+  const getScrollAnimation = () => {
+    // getAnimations() returns all animations applied to the element
+    const animations = reviewsTrack.getAnimations();
+    return animations.find((a) => a.animationName === "scrollMarquee");
+  };
+
+  const handleTouchStart = (e) => {
+    // Only handle single touch
+    if (e.touches.length !== 1) return;
+    
+    const anim = getScrollAnimation();
+    if (!anim) return;
+
+    isSwiping = true;
+    startX = e.touches[0].clientX;
+    // Current time could be unready, fallback to 0
+    animStartTime = anim.currentTime || 0;
+
+    // Pause auto-slide
+    anim.pause();
+    
+    // Clear any pending resume
+    if (resumeTimer) {
+      clearTimeout(resumeTimer);
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isSwiping) return;
+    
+    const anim = getScrollAnimation();
+    if (!anim) return;
+
+    const currentX = e.touches[0].clientX;
+    const deltaX = currentX - startX;
+
+    const marquee = document.querySelector(".reviews-marquee");
+    if (!marquee) return;
+    
+    // Calculate total animation distance (width of one marquee set + gap)
+    const gap = parseFloat(window.getComputedStyle(reviewsTrack).gap) || 32;
+    const distance = marquee.offsetWidth + gap;
+
+    // 35000ms is the duration from CSS (35s)
+    const duration = 35000; 
+    
+    // Convert pixel delta to time delta.
+    // Moving left (negative deltaX) means progressing forward in time.
+    const deltaTime = -(deltaX / distance) * duration;
+
+    // Calculate new time with wrapping
+    let newTime = (animStartTime + deltaTime) % duration;
+    if (newTime < 0) newTime += duration;
+
+    // Apply hardware-accelerated transform via WAAPI currentTime
+    anim.currentTime = newTime;
+  };
+
+  const handleTouchEnd = () => {
+    if (!isSwiping) return;
+    isSwiping = false;
+
+    const anim = getScrollAnimation();
+    if (!anim) return;
+
+    // Resume auto-slide after ~3 seconds
+    resumeTimer = setTimeout(() => {
+      anim.play();
+    }, 3000);
+  };
+
+  // Bind native touch events
+  reviewsTrack.addEventListener("touchstart", handleTouchStart, { passive: true });
+  reviewsTrack.addEventListener("touchmove", handleTouchMove, { passive: true });
+  reviewsTrack.addEventListener("touchend", handleTouchEnd, { passive: true });
+  reviewsTrack.addEventListener("touchcancel", handleTouchEnd, { passive: true });
+});
