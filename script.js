@@ -515,10 +515,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const anim = getScrollAnimation();
     if (!anim) return;
 
-    // Resume auto-slide after ~3 seconds
+    // Resume auto-slide after ~1 second
     resumeTimer = setTimeout(() => {
       anim.play();
-    }, 3000);
+    }, 1000);
   };
 
   // Bind native touch events
